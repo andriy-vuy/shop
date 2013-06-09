@@ -1,0 +1,38 @@
+* html #wrapper,
+* html #footer {
+	width: expression(
+	(document.compatMode && document.compatMode == 'CSS1Compat') ?
+	(document.documentElement.clientWidth < 600 ? "600px" :
+	(document.documentElement.clientWidth > 1000 ? "1000px" : "auto")) :
+	(document.body.clientWidth > 600 ? "600px" :
+	(document.body.clientWidth < 1000 ? "1000px" : "auto")));
+}
+#header, #footer{
+	position:relative;
+	behavior:url(/htc/PIE.htc);
+}
+h2{
+font-size:1.5em;
+}
+h3{
+font-size:1.17em;
+}
+* html #main{
+	zoom:1;
+	display:inline;
+	width:200px;
+	margin:20px;
+	float:left;
+	text-align:center;
+	vertical-align:top;
+}
+* html #pic{
+	margin:5px 10px 5px;
+	float:left;
+}
+* html #p_text{
+	height:120px;
+}
+* html #clear{
+	clear:left;
+}

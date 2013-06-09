@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if ($this->pageCount > 1){
+if (isset($this->previous)){
+	echo "<a href='{$this->url(array('page' => $this->first))}'><<Первая </a>";
+} 
+if (isset($this->previous)){
+	echo "<a href='{$this->url(array('page' => $this->previous))}'><Предыдущая </a>";
+}  
+foreach ($this->pagesInRange as $page){
+	if ($page != $this->current){
+		echo "<a href='{$this->url(array('page' => $page))}'> $page </a>";
+	}else{
+		echo " ..$page.. ";
+	}
+}
+if (isset($this->next)){
+	echo "<a href='{$this->url(array('page' => $this->next))}'> Следующая></a>";
+}
+if (isset($this->next)){
+	echo "<a href='{$this->url(array('page' => $this->last))}'> Последняя>></a>";
+}
+}
+?>

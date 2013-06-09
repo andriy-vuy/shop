@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if(count($this->catalog)){
+	$elm = array(0 => array('c_title' => '', 'c_parent_id' => -1));
+	foreach($this->catalog as $r)
+		$elm[$r['c_id']] = $r;
+	
+			function print_cat($data, $node_id, $level = 0)
+		{
+			echo str_repeat('&nbsp &nbsp', $level) . "<a href='/admin/catalogview/id/$node_id'>";
+			echo $data[$node_id]['c_title'];
+			if($node_id){
+			echo
+			"&nbsp<a href='/admin/catalogedit/id/$node_id'>Изменить</a>" .
+			"&nbsp<a href='/admin/catalogdelete/id/$node_id'>Удалить</a>";
+			}
+			echo '<br>' . '</a>';
+			foreach ($data as $row)
+				if ($row['c_parent_id'] == $node_id)
+					echo print_cat($data, $row['c_id'], $level + 1);
+		}
+	print_cat($elm, 0);
+}else{
+echo '<p>Категорий пока нет</p>';
+}
+echo '<a href="/admin/catalogadd">Добавить новую категорию</a><br>';
+?>

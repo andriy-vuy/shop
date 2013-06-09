@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.gallery').lightBox({
+    imageLoading: '/img/loading.gif',
+    imageBtnClose: '/img/close.gif',
+    imageBtnPrev: '/img/prev.gif',
+    imageBtnNext: '/img/next.gif',
+    txtImage: 'Изображение',
+    txtOf: 'из'
+   });
+});
+</script>
+<?php
+if($this->cat->c_title){
+$catalog = $this->cat->c_title;
+}else{
+$par = 'Корень';
+}
+echo <<<LABEL
+	<h3>Название: {$this->product->p_title}</h3>
+	<p>Категория: {$catalog}</p>
+	<p>Ключевые слова: <br>{$this->product->p_metakeywords}</p>
+	<p>Мета описание: <br>{$this->product->p_metadescription}</p>
+	<p>Полное описание: <br>{$this->product->p_text}</p>
+	<p>Стоимость: {$this->product->p_price}</p>
+	<p>Наценка: {$this->markup->name}</p>
+	<p>Дата создания: {$this->product->p_created}</p>
+	<p>Дата изменения: {$this->product->p_latmodified}</p>
+LABEL;
+$p_id = $this->product->p_id;
+if($this->product->p_status){
+	echo "<p><a href='/admin/productactiv/id/$p_id/val/0'>Скрыть</a></p>";
+}else{
+	echo "<p><a href='/admin/productactiv/id/$p_id/val/1'>Показать</a></p>";
+}
+foreach($this->img as $image){
+	if($image['pi_img'] && $image['pi_img']){
+		$pi_img = $image['pi_img'];
+		echo "<a class='gallery' href='/data/images/$pi_img'><img src='/data/images/$pi_img' height='120px' width='90px' alt=''/></a>";
+	}
+}	
+?>

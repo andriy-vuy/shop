@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<?php echo $this->doctype();?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<?php echo $this->headMeta();?>
+	<!--[if IE]>
+		<?php echo $this->headScript()->appendFile($this->baseUrl().'/js/html5.js');?>
+	<![endif]-->
+	<?php echo $this->headTitle();?>
+	<?php echo $this->headLink()->prependStylesheet('/css/style.css');?>
+	<?php echo $this->headLink()->prependStylesheet('/css/jquery.lightbox-0.5.css');?>
+	<!--[if IE]>
+		<?php echo $this->headLink()->prependStylesheet('/css/style_ie.css');?>
+	<![endif]-->
+	<?php echo $this->headScript()->appendFile($this->baseUrl().'/js/jquery-1.8.0.min.js');?>
+	<?php echo $this->headScript()->appendFile($this->baseUrl().'/js/jquery.lightbox-0.5.pack.js');?>
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header">
+			<?php echo $this->MenuHelper();?>	
+		</header><!-- #header-->
+		<section id="middle">
+			<div id="container">
+				<div id="content">
+					<h2><?php echo $this->title;?></h2>
+					<p><?php echo $this->layout()->content;?></p>
+				</div><!-- #content-->
+			</div><!-- #container-->
+			<aside id="sideLeft">
+				<div id="sidebar">
+					<?php
+						echo $this->SearchHelper();
+						echo $this->UsersHelper();
+						echo $this->CatHelper();
+						echo $this->CartHelper();
+					?>
+				</div>
+			</aside><!-- #sideLeft -->
+		</section><!-- #middle-->
+		<footer id="footer"></footer><!-- #footer -->
+	</div><!-- #wrapper -->
+</body>
+</html>

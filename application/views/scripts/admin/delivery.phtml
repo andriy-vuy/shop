@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#d_name').focus();
+});
+</script>
+<?php
+if(count($this->delivery)){
+	foreach($this->delivery as $val){
+		$id = $val['d_id'];
+		echo '<p>'.$val['d_name'] . "<a href='/admin/deliverydelete/id/$id'> Delete</a></p>";
+	}
+}else{
+	echo '<p>Перевозчиков нет</p>';
+}
+echo '<h3>Добавить перевозчика<h3>'.$this->form;
+?>

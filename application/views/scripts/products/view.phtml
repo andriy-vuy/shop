@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.gallery').lightBox({
+    imageLoading: '/img/loading.gif',
+    imageBtnClose: '/img/close.gif',
+    imageBtnPrev: '/img/prev.gif',
+    imageBtnNext: '/img/next.gif',
+    txtImage: 'Изображение',
+    txtOf: 'из'
+   });
+});
+</script>
+<?php
+if($this->idetity){
+	$name = $this->idetity->u_role;
+}else{
+	$name = 'guest';
+}
+if($this->cat->c_title){
+$catalog = $this->cat->c_title;
+}else{
+$par = 'Корень';
+}
+echo <<<LABEL
+	<p>Категория: {$catalog}</p>
+	<p>Описание: {$this->product->p_text}</p>
+LABEL;
+echo '<p>Цена: ';
+if($name == 'guest'){
+	echo round($this->product->p_price*$this->markup->tax*$this->markup->guest,2);
+}elseif($name == 'user'){
+	echo round($this->product->p_price*$this->markup->tax*$this->markup->user,2);
+}elseif($name == 'user1'){
+	echo round($this->product->p_price*$this->markup->tax*$this->markup->user1,2);
+}elseif($name == 'user2'){
+	echo round($this->product->p_price*$this->markup->tax*$this->markup->user2,2);
+}elseif($name == 'user3'){
+	echo round($this->product->p_price*$this->markup->tax*$this->markup->user3,2);
+}elseif($name == 'admin'){
+	echo round($this->product->p_price*$this->markup->tax*$this->markup->admin,2);
+}
+echo ' грн</p>';
+foreach($this->img as $image){
+	if($image['pi_img'] && $image['pi_img']){
+		$pi_img = $image['pi_img'];
+		echo "<a class='gallery' href='/data/images/$pi_img'><img src='/data/images/$pi_img' height='120px' width='90px' alt=''/></a>";
+	}
+}
+$p_id = $this->product->p_id;
+echo "<p><a href='/user/addtocart/id/$p_id'>В Корзину</a></p>";
+?>

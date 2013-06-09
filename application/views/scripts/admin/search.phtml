@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if(count($this->search)){
+	foreach($this->search as $value){
+		if($value['p_id']){
+			$p_id = $value['p_id'];
+			$p_title = $value['p_title'];
+			$p_text = $value['p_text'];
+			echo "<p><a href='/admin/productview/id/$p_id'>$p_title </a> $p_text</p>";
+		}
+		if($value['c_id']){
+			$c_id = $value['c_id'];
+			$c_title = $value['c_title'];
+			$c_text = $value['c_text'];
+			echo "<p><a href='/admin/catalogview/id/$c_id'>$c_title </a> $c_text</p>";
+		}
+		if($value['u_id']){
+			$u_id = $value['u_id'];
+			$u_name = $value['u_name'];
+			$u_email = $value['u_email'];
+			$u_phone = $value['u_phone'];
+			echo "<p><a href='/admin/userview/id/$u_id'>$u_name </a> $u_email $u_phone</p>";
+		}
+	}
+}else{
+	echo 'Ничего не найдено';
+}
+?>

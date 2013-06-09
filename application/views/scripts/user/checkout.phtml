@@ -1,0 +1,85 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if($this->idetity){
+	$name = $this->idetity->u_role;
+}else{
+	$name = 'guest';
+}
+if(count($this->cart)):
+$i = 1;
+$sum = 0;
+$prise = 0;
+echo $this->form;
+?>
+<h3>Информация о заказе:</h3>
+	<table>
+		<tr>
+			<th>№</th>
+			<th>Наименование</th>
+			<th>Изображение</th>
+			<th>Цена</th>
+			<th>Количество</th>
+			<th>Сумма</th>
+		</tr>
+	<?php foreach($this->cart as $values):
+		if($name == 'guest'){
+			$prise = round($values['p_price']*$values['tax']*$values['guest'],2);
+		}elseif($name == 'user'){
+			$prise = round($values['p_price']*$values['tax']*$values['user'],2);
+		}elseif($name == 'user1'){
+			$prise = round($values['p_price']*$values['tax']*$values['user1'],2);
+		}elseif($name == 'user2'){
+			$prise = round($values['p_price']*$values['tax']*$values['user2'],2);
+		}elseif($name == 'user3'){
+			$prise = round($values['p_price']*$values['tax']*$values['user3'],2);
+		}elseif($name == 'admin'){
+			$prise = round($values['p_price']*$values['tax']*$values['admin'],2);
+		}
+?>
+		<tr>
+			<td><?php echo $i;?></td>
+			<td><?php 
+			$p_id = $values['p_id'];
+			$p_title = $values['p_title'];
+			$sc_pid = $values['sc_pid'];
+			if($name == 'guest' or $name == 'user'){
+				echo "<a href='/products/view/id/$p_id/'>ID-$p_id</a>";
+			}else{
+				echo "<a href='/products/view/id/$p_id/'>$p_title</a>";}?></td>
+			<td><?php
+			foreach($this->images as $val){
+			$pi_pid = $val['pi_pid'];
+			if($pi_pid == $p_id){
+			$pi_img = $val['pi_img'];
+			echo "<a href='/products/view/id/$p_id'><Img src='/data/images/$pi_img'Width='50' Height='80'></a>";
+			}
+			}
+			?></td>
+			<td><?php echo $prise;?></td>
+			<td><?php
+			$sc_quantity = $values['sc_quantity'];
+			$p_quantity = $values['p_quantity'];
+			$p_ordered = $values['p_ordered'];
+			if($sc_quantity >= $p_quantity - $p_ordered){
+			$quantity = $p_quantity - $p_ordered;
+			}else{
+			$quantity = $sc_quantity;
+			}
+			echo $quantity;?></td>
+			<td><?php echo $quantity * $prise;?></td>
+		</tr>
+		</tr>
+	<?php
+	$i++;
+	$sum += $values['sc_quantity']*$prise;
+	endforeach;
+	?></table><?php
+	echo "<p>Товаров на сумму: $sum Гривен</p>";
+	else:?>
+		<p>В вашей корзине нет товаров</p>
+		<?php endif;?>
+<a href='/user/cart/'>Вернутся в корзину</a>

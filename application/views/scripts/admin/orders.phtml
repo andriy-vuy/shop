@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if(count($this->paginator)):
+?>
+	<table>
+		<tr>
+			<th>Имя</th>
+			<th>Дата</th>
+			<th>Удалить</th>
+		</tr>
+	<?php foreach($this->paginator as $val):?>
+		<tr>
+			<td><a href="<?php echo $this->url(array(
+					'controller' => 'admin',
+					'action' => 'order',
+					'id' => $val['o_id']
+				));?>"><?php echo $val['o_username'];?></a></td>
+			<td><?php echo $val['o_created'];?></td>
+			<td>
+				<a href="<?php echo $this->url(array(
+					'controller' => 'admin',
+					'action' => 'orderdelete',
+					'id' => $val['o_id']
+				));?>">Удалить</a>
+			</td>
+		</tr>
+	<?php endforeach;?>
+	</table>
+	<?php echo $this->paginator; ?>
+	<?php else:?>
+		<p>Заказов пока нет</p>
+		<?php endif;?>

@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+	foreach($this->info as $val){
+		$id = $val['i_id'];
+		$title = $val['i_title'];
+		echo "<p><a href='/admin/info/id/$id/'>$title</a></p>";
+	}
+	if($this->form){
+		echo $this->form;
+	}
+?>

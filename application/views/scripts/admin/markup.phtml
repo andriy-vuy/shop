@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if(count($this->markup)):
+?>
+	<table>
+		<thead>
+			<tr>
+				<th>Название</th>
+				<th>Расходы</th>
+				<th>Гость</th>
+				<th>User</th>
+				<th>User 1</th>
+				<th>User 2</th>
+				<th>User 3</th>
+				<th>Изменить</th>
+			</tr>
+		</thead>
+	<?php foreach($this->markup as $val):?>
+		<tbody>
+			<tr>
+				<td><?php echo $val['name'];?></td>
+				<td><?php echo $val['tax'];?></td>
+				<td><?php echo $val['guest'];?></td>
+				<td><?php echo $val['user'];?></td>
+				<td><?php echo $val['user1'];?></td>
+				<td><?php echo $val['user2'];?></td>
+				<td><?php echo $val['user3'];?></td>
+				<td>
+					<a href="<?php echo $this->url(array(
+						'controller' => 'admin',
+						'action' => 'markupedit',
+						'id' => $val['t_id']
+					));?>">Edit</a>
+				</td>
+			</tr>
+		</tbody>
+	<?php endforeach;?>
+	</table>
+	<?php else:?>
+		<p>Записей пока нет</p>
+		<?php endif;?>
+	<p><a href="<?php echo $this->url(array(
+					'controller' => 'admin',
+					'action' => 'markupadd'
+				));?>">Добавить новую наценку</a></p>

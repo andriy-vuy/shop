@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if(count($this->search)){
+	foreach($this->search as $value){
+		if($value['p_id']){
+			$p_id = $value['p_id'];
+			$p_title = $value['p_title'];
+			$p_text = $value['p_text'];
+			echo "<p><a href='/products/view/id/$p_id'>$p_title </a> $p_text</p>";
+		}
+		if($value['c_id']){
+			$c_id = $value['c_id'];
+			$c_title = $value['c_title'];
+			$c_text = $value['c_text'];
+			echo "<p><a href='/products/catalogview/id/$c_id'>$c_title </a> $c_text</p>";
+		}
+	}
+}else{
+	echo 'Ничего не найдено';
+}
+?>

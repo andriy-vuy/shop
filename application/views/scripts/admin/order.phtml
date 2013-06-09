@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if($this->order){
+$i = 1;
+$sum = 0;
+foreach($this->order as $value){
+	echo "<p>Заказ: ".$value['o_code']."</p>";
+	echo "<p>От ".$value['o_created']."</p>";
+	echo "<p>Заказчик: ".$value['o_username']."</p>";
+	if($value['o_useremail']){
+		echo "<p>Email: ".$value['o_useremail']."</p>";
+	}
+	if($value['o_userphone']){
+		echo "<p>Телефон: ".$value['o_userphone']."</p>";
+	}
+	echo "<p>Оплата: ".$value['o_payment']."</p>";
+	echo "<p>Доставка: ".$value['d_name']."</p>";
+	if($value['o_text']){
+		echo "<p>Пожелания: ".$value['o_text']."</p>";
+	}
+}
+?>
+<table>
+		<tr>
+			<th>№</th>
+			<th>Наименование</th>
+			<th>Цена</th>
+			<th>Количество</th>
+		</tr>
+<?php
+foreach($this->order_p as $val){
+echo "<tr>";
+echo "<td>".$i."</td>";
+echo "<td>".$val['op_producttitle']."</td>";
+echo "<td>".$val['op_productprice']." грн</td>";
+echo "<td>".$val['op_quantity']."</td>";
+echo "</tr>";
+$i++;
+$sum += $val['op_quantity'] * $val['op_productprice'];
+}
+echo '</table>';
+echo "<p>Сумма заказа: $sum Гривен</p>";
+}else{
+echo"<h3>Такого заказа нет!</h3>";
+}
+?>

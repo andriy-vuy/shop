@@ -1,0 +1,11 @@
+p_code;p_title;p_price;p_quantity;p_cat_id;p_markup;img_1;img_2;p_text;p_metakeywords;p_metadescription
+a00001;product1;23;2;2;1;IMG_0242.JPG;IMG_0243.JPG;www;www;www
+a00002;product2;112;12;1;1;IMG_0244.JPG;IMG_0245.JPG;sss;sss;sss
+a00003;product3;45;7;2;1;IMG_0246.JPG;IMG_0247.JPG;ccc;ccc;ccc
+a00004;product4;65;9;2;1;IMG_0248.JPG;IMG_0249.JPG;vvv;vvv;vvv
+a00005;product5;167;21;1;1;IMG_0250.JPG;IMG_0251.JPG;fff;fff;fff
+a00006;product6;76;0;2;1;IMG_0252.JPG;IMG_0253.JPG;hjj;hjj;hjj
+a00007;product7;24;6;2;1;IMG_0255.JPG;IMG_0256.JPG;hhh;hhh;hhh
+a00008;product8;56;0;2;1;IMG_0257.JPG;IMG_0258.JPG;asd;asd;asd
+a00009;product9;78;9;1;1;IMG_0259.JPG;IMG_0260.JPG;ert;ert;ert
+a00010;product10;23;4;2;1;IMG_0261.JPG;IMG_0262.JPG;kjh;kjh;kjh

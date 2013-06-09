@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */ 
+if(count($this->paginator)):
+?>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Имя</th>
+				<th>Email</th>
+				<th>Состояние</th>
+				<th>Роль</th>
+				<th>Действия</th>
+			</tr>
+		</thead>	
+	<?php foreach($this->paginator as $user):?>
+		<tbody>
+			<tr>
+				<td><?php echo $user['u_id'];?></td>
+				<td><a href="<?php echo $this->url(array(
+						'controller' => 'admin',
+						'action' => 'userview',
+						'id' => $user['u_id']
+					));?>"><?php echo $user['u_name'];?></a></td>
+				<td><?php echo $user['u_email'];?></td>
+				<td><?php
+					if($user['u_activated'] == 1){
+						echo'Актив';
+					}elseif($user['u_activated'] == 0){
+						echo'Блок';
+					}
+					?></td>
+				<td><?php echo $user['u_role'];?></td>
+				<td>
+					<a href="<?php echo $this->url(array(
+						'controller' => 'admin',
+						'action' => 'useredit',
+						'id' => $user['u_id']
+					));?>">Edit</a>
+					<a href="<?php echo $this->url(array(
+						'controller' => 'admin',
+						'action' => 'userdelete',
+						'id' => $user['u_id']
+					));?>">Delete</a>
+				</td>
+			</tr>
+		</tbody>	
+	<?php endforeach;?>
+	</table>
+	<?php echo $this->paginator; ?>
+	<?php else:?>
+		<p>Пользователей пока нет</p>
+		<?php endif;?>
+	<p><a href="<?php echo $this->url(array(
+					'controller' => 'admin',
+					'action' => 'useradd'
+				));?>">Добавить нового пользователя</a></p>

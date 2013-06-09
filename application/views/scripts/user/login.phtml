@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#u_name').focus();
+});
+</script>
+<?php
+if($this->idetity){
+	echo"<p>Вы вошли под именем <strong>{$this->idetity->u_name}<br><a href='/user/logout'>выйти </a>или<a href='/'> Перейти на главную</a></strong></p>" ;
+}else{ 
+	echo $this->error;
+	echo $this->form;
+	echo '<br><p><a href="/user/registration/">Регистрация</a></p>';
+}
+?>

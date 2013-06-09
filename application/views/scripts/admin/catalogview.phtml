@@ -1,0 +1,62 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#search').focus();
+	$('.pic').hover(function(eventObject){
+		$(this).stop().animate({width:"240px",height:"320px"}, 800);
+	},function(){
+		$(this).stop().animate({width:"90px",height:"120px"}, 800);
+	});
+});
+</script>
+<?php
+if($this->c_parent->c_title){
+$par = $this->c_parent->c_title;
+}else{
+$par = 'Корень';
+}
+echo <<<LABEL
+	<h3>Название: {$this->catalog->c_title}</h3>
+	<p>Категория родителя: {$par}</p>
+	<p>Ключевые слова: <br>{$this->catalog->c_metakeywords}</p>
+	<p>Мета описание: <br>{$this->catalog->c_metadescription}</p>
+	<p>Полное описание: <br>{$this->catalog->c_text}</p>
+	<p>Дата создания: {$this->catalog->c_created}</p>
+	<p>Дата изменения: {$this->catalog->c_lastmodified}</p>
+LABEL;
+if(count($this->paginator)){
+	$cat_id = $this->cat_id;
+	echo "<p>Сортировка: &nbsp &nbsp &nbsp
+	<a href='/admin/catalogview/id/$cat_id/sort/1/'> + </a>ДАТА<a href='/admin/catalogview/id/$cat_id/sort/2/'> - </a> &nbsp &nbsp <a href='/admin/catalogview/id/$cat_id/sort/3'> + </a>НАИМЕНОВАНИЕ<a href='/admin/catalogview/id/$cat_id/sort/4/'> - </a> &nbsp &nbsp <a href='/admin/catalogview/id/$cat_id/sort/5/'> + </a>ЦЕНА<a href='/admin/catalogview/id/$cat_id/sort/6/'> - </a></p>";
+	foreach($this->paginator as $product){
+		echo'<p>';
+		$p_id = $product['p_id'];
+		$p_title = $product['p_title'];
+		$pi_img = $product['pi_img'];
+		echo "<a href='/admin/productview/id/$p_id'><Img id='pic' class='pic' src='/data/images/$pi_img'Width='90' Height='120'></a><div id='p_text'>";
+		echo "<h3><a href='/admin/productview/id/$p_id'>ID-$p_id $p_title</a></h3><br>";
+		echo 'Дата добавления: ' . $product['p_created'] . '<br>';
+		echo 'Цена: ' . $product['p_price'] . ' гривен<br>';
+		echo 'Количество: ' . $product['p_quantity'] . ' шт.<br>';
+		echo 'Наценка: ' . $product['name'] . '<br>';
+		echo 'Действия: ';
+		if($product['p_status']){
+			echo "<a href='/admin/productactiv/id/$p_id/val/0'> Скрыть </a>";
+		}else{
+			echo "<a href='/admin/productactiv/id/$p_id/val/1'> Показать </a>";
+		}
+		echo "<a href='/admin/productedit/id/$p_id'> Редактировать </a>";
+		echo "<a href='/admin/productdelete/id/$p_id'> Удалить </a></div>";
+		echo'</p><div id="clear"></div>';
+	}
+		echo $this->paginator;
+}else{
+	echo'<p>В этой категории нет товаров</p>';
+}
+?>

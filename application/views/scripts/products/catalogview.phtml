@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#search').focus();
+	$('.pic').hover(function(eventObject){
+		$(this).stop().animate({width:"240px",height:"320px"}, 800);
+	},function(){
+		$(this).stop().animate({width:"90px",height:"120px"}, 800);
+	});
+});
+</script>
+<?php
+if($this->idetity){
+	$name = $this->idetity->u_role;
+}else{
+	$name = 'guest';
+}
+echo "<p>Описание: <br>{$this->catalog->c_text}</p>";
+if(count($this->paginator)){
+	$cat_id = $this->cat_id;
+	echo "<p>Сортировка: &nbsp &nbsp &nbsp
+	<a href='/products/catalogview/id/$cat_id/sort/1/'> + </a>ДАТА<a href='/products/catalogview/id/$cat_id/sort/2/'> - </a> &nbsp &nbsp <a href='/products/catalogview/id/$cat_id/sort/3'> + </a>НАИМЕНОВАНИЕ<a href='/products/catalogview/id/$cat_id/sort/4/'> - </a> &nbsp &nbsp <a href='/products/catalogview/id/$cat_id/sort/5/'> + </a>ЦЕНА<a href='/products/catalogview/id/$cat_id/sort/6/'> - </a></p>";
+	foreach($this->paginator as $product){
+		echo'<p>';
+		$p_id = $product['p_id'];
+		$p_title = $product['p_title'];
+		$pi_img = $product['pi_img'];
+		echo "<a href='/products/view/id/$p_id/'><Img id='pic' class='pic' src='/data/images/$pi_img'Width='90' Height='120'></a><div id='p_text'>";
+		if($name == 'guest' or $name == 'user'){
+			echo "<h3><a href='/products/view/id/$p_id/'>ID-$p_id</a></h3><br>";
+		}else{
+			echo "<h3><a href='/products/view/id/$p_id/'>$p_title</a></h3><br>";
+		}
+		echo 'Дата добавления: ' . $product['p_created'] . '<br>';
+		echo'Цена: ';
+		if($name == 'guest'){
+			echo round($product['p_price']*$product['tax']*$product['guest'],2);
+		}elseif($name == 'user'){
+			echo round($product['p_price']*$product['tax']*$product['user'],2);
+		}elseif($name == 'user1'){
+			echo round($product['p_price']*$product['tax']*$product['user1'],2);
+		}elseif($name == 'user2'){
+			echo round($product['p_price']*$product['tax']*$product['user2'],2);
+		}elseif($name == 'user3'){
+			echo round($product['p_price']*$product['tax']*$product['user3'],2);
+		}elseif($name == 'admin'){
+			echo round($product['p_price']*$product['tax']*$product['admin'],2);
+		}
+		echo ' гривен';
+		echo "<br><br><a href='/user/addtocart/id/$p_id'>В Корзину</a></div>";
+		echo'</p><div id="clear"></div>';
+	}
+	echo $this->paginator;
+}else{
+	echo'<p>В этой категории нет товаров</p>';
+}
+?>

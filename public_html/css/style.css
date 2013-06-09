@@ -1,0 +1,173 @@
+html,#wrapper{
+	height:100%;
+}
+html{
+	background:fff;
+}
+*{
+	margin:0;
+	padding:0;
+}
+header, nav, section, article, aside, footer {
+	display:block;
+}
+body{
+	font:14px/18px Arial, Tahoma, Verdana, sans-serif;
+}
+a{
+	color:blue;
+	outline:none;
+	text-decoration:none;
+}
+a:hover{
+	color:#ff0000;
+	text-decoration:none;
+}
+p{
+	margin:0 0 18px
+}
+img{
+	border:none;
+}
+input{
+	vertical-align:middle;
+}
+#wrapper{
+	min-width:600px;
+	max-width:1000px;
+	margin:20px auto 0;
+	background:#f8f8f8;
+}
+/* Header
+--------------------*/
+#header{
+	width:100%;
+	height:100px;
+	border-top:4px double blue;
+	border-left:4px double blue;
+	border-right:4px double blue;
+	border-bottom:1px dotted blue;
+	border-radius:15px 15px 0 0;
+}
+/* Menu
+--------------------*/
+#menu{
+	list-style:none;
+	margin:5px 0 0 350px;
+	padding:0;
+}
+#menu li{
+	float:left;
+	margin-right:40px;
+}
+#menu a,#menu span{
+	display:inline-block;
+	height:26px;
+	background:url(../img/button.png) no-repeat 0 26px;
+}
+#menu a{
+	line-height:26px;
+	text-transform:uppercase;
+	text-decoration:none;
+	color:#000;
+}
+#menu span{
+	position:relative;
+	left:10px;
+	padding:0 10px 0 0;
+}
+#menu a:hover{
+	background-position:0 0;
+}
+#menu a:hover span{
+	background-position:100% 0;
+	color:#fff;
+}
+/* Middle
+--------------------*/
+#middle{
+	width:100%;
+	height:1%;
+	position:relative;
+	border-left:4px double blue;
+	border-right:4px double blue;
+}
+#middle:after{
+	content:'.';
+	display:block;
+	clear:both;
+	visibility:hidden;
+	height:0;
+}
+#container{
+	width:100%;
+	float:left;
+	overflow:hidden;
+}
+#content{
+	padding:0 10px 0 220px;
+}
+#content h2{
+	margin-top:10px;
+}
+/*Отображение товаров*/
+#pic{
+	margin:5px 10px 5px;
+	float:left;
+}
+#p_text{
+	height:120px;
+}
+#clear{
+	clear:left;
+}
+.gallery{
+	margin-left:5px;
+}
+/*Отображение таблиц*/
+table{
+	width:100%;
+	border-collapse:collapse;
+}
+th,td{
+	padding:5px;
+	border:1px solid #e0e0e0;
+	text-align:center;
+}
+/*Отображение на главной*/
+#main{
+	display:inline-block;
+	width:200px;
+	margin:20px;
+	float:left;
+	text-align:center;
+	vertical-align:top;
+}
+/* Sidebar Left
+--------------------*/
+#sideLeft{
+	float:left;
+	width:200px;
+	margin-left:-100%;
+	position:relative;
+	/* background:#B5E3FF; */
+}
+#sidebar{
+	padding-left:10px;
+	border-right:1px dotted blue;
+}
+/* #sidebar a:hover{
+	border:1px dotted blue;
+	border-radius:5px;
+} */
+/* Footer
+--------------------*/
+#footer{
+	width:1000px;
+	height:50px;
+	border-top:1px dotted blue;
+	border-left:4px double blue;
+	border-right:4px double blue;
+	border-bottom:4px double blue;
+	border-radius:0 0 15px 15px;
+}

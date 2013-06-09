@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if($this->idetity){
+	$name = $this->idetity->u_role;
+	echo "<p><h3>Здравствуйте <strong>{$this->idetity->u_name}</h3></p>";
+	echo '<p><a href="/user/edit">Изменить пароль</a>';
+	echo '<p><a href="/user/logout">Выйти из аккаунта</a></strong></p>';
+	echo '<p><strong><a href="/">Перейти на главную</a></strong></p>';
+	echo '<p><strong><a href="/user/orders/">Заказы</a></strong></p>';
+}else{ 
+	$name = 'guest';
+	echo "<p>{$this->message}</p>";
+}
+$sum = 0;
+$quantity = 0; 
+if(count($this->cart)){
+echo'<p><strong><a href="/user/cart">Корзина</a></strong>';
+	foreach($this->cart as $val){
+		if($name == 'guest'){
+			$prise = round($val['p_price']*$val['tax']*$val['guest'],2);
+		}elseif($name == 'user'){
+			$prise = round($val['p_price']*$val['tax']*$val['user'],2);
+		}elseif($name == 'user1'){
+			$prise = round($val['p_price']*$val['tax']*$val['user1'],2);
+		}elseif($name == 'user2'){
+			$prise = round($val['p_price']*$val['tax']*$val['user2'],2);
+		}elseif($name == 'user3'){
+			$prise = round($val['p_price']*$val['tax']*$val['user3'],2);
+		}elseif($name == 'admin'){
+			$prise = round($val['p_price']*$val['tax']*$val['admin'],2);
+		}
+		$sum += $val['sc_quantity']*$prise;
+		$quantity += $val['sc_quantity'];
+	}
+echo '<br>Количество '.$quantity;
+echo '<br>На сумму: '.$sum.' гривен'.'</p>';
+}else{
+echo'<p><strong><a href="/user/cart">Корзина пустая</a></strong></p>';
+}
+?>

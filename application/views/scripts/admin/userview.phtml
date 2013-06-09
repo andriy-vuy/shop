@@ -1,0 +1,14 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+echo "<p>ID: <strong>{$this->user->u_id}</strong></p>";
+echo "<p>Имя пользователя: <strong>{$this->user->u_name}</strong></p>";
+echo "<p>Email: <strong><a href='mailto:{$this->user->u_email}'>{$this->user->u_email}</a></strong></p>";
+echo "<p>Телефон: <strong>{$this->user->u_phone}</strong></p>";
+echo "<p>Права доступа: <strong>{$this->user->u_role}</strong></p>";
+echo "<p>Дата регистрации: <strong>{$this->user->u_created}</strong></p>";
+echo "<p>Дата последнего изменения данных: <strong>{$this->user->u_lastmodified}</strong></p>";
+?>

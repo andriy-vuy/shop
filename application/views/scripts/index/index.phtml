@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#search').focus();
+});
+</script>
+<?php
+if($this->idetity == 'admin'){
+echo'<a href="/admin/">Администрирование</a>';
+}
+if($this->idetity){
+	$name = $this->idetity->u_role;
+	echo"<h3>Здравствуйте <strong>{$this->idetity->u_name}</strong></h3>"; 
+}else{
+	echo'<h3><a href="/user/login">Вход </a><strong>'; 
+	$name = 'guest';
+	echo $this->message . '</strong></h3>';
+}
+if(count($this->products)){
+	echo '<div id="main-block">';
+	foreach($this->products as $value){
+		echo '<div id="main">';
+		$p_id = $value['p_id'];
+		$pi_img = $value['pi_img'];
+		echo "<a href='/products/view/id/$p_id'><Img src='/data/images/$pi_img'Width='90' Height='120'></a><br>";
+		if($name == 'user1' || $name == 'user2' || $name == 'user3' || $name == 'admin'){
+			echo $value['p_title'] . '<br>';
+		}
+		echo'Цена: ';
+		if($name == 'guest'){
+				echo round($value['p_price']*$value['guest']*$value['tax'],2);
+			}elseif($name == 'user'){
+				echo round($value['p_price']*$value['user']*$value['tax'],2);
+			}elseif($name == 'user1'){
+				echo round($value['p_price']*$value['user1']*$value['tax'],2);
+			}elseif($name == 'user2'){
+				echo round($value['p_price']*$value['user2']*$value['tax'],2);
+			}elseif($name == 'user3'){
+				echo round($value['p_price']*$value['user3']*$value['tax'],2);
+			}elseif($name == 'admin'){
+				echo round($value['p_price']*$value['admin']*$value['tax'],2);
+			}
+			echo ' грн<br></div>';
+	}
+	echo '</div>';
+}
+?>

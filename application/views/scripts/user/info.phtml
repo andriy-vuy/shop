@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#from').focus();
+});
+</script>
+<?php
+foreach($this->info as $value){
+	echo '<p>' . $value['i_text'] . '</p>';
+}
+if($this->form){
+	echo $this->form;
+}
+?>

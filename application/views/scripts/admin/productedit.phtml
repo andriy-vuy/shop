@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+echo '<p>';
+foreach($this->images as $image){
+	$pi_id = $image['pi_id'];
+	if($image['pi_img'] && $image['pi_img']){
+		$pi_img = $image['pi_img'];
+		echo "<Img src='/data/images/$pi_img'Width='80' Height='100'> ";
+		echo "<a href='/admin/imgdelete/id/$pi_id'>(-)</a>";
+	}
+}
+echo $this->form_img;
+echo $this->form;
+echo '</p>';
+?>

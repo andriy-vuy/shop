@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+if($this->form){
+	echo $this->form;
+}
+echo '<p>';
+if (file_exists("./data/csv/insert.csv")){
+	echo '<a href="/admin/csv/value/insert/">Добавить товары</a>';
+}
+if (file_exists("./data/csv/update.csv")){
+	echo '<a href="/admin/csv/value/update/">Изменить</a>';
+}
+if (file_exists("./data/csv/update_2.csv")){
+	echo '<a href="/admin/csv/value/update_2/">Изменить_2</a>';
+}
+if (file_exists("./data/csv/delete.csv")){
+	echo '<a href="/admin/csv/value/delete/">Удалить</a>';
+}
+echo '</p>';
+?>

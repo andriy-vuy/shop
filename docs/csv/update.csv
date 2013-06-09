@@ -1,0 +1,11 @@
+p_code;p_title;p_price;p_quantity;p_cat_id;p_markup;p_text;p_status;p_metakeywords;p_metadescription
+a00001;product1;23;2;2;1;www;1;www;www
+a00002;product2;120;12;1;1;sss;1;sss;sss
+a00003;product3;45;7;2;1;ccc;1;ccc;ccc
+a00004;product4;65;9;2;1;vvv;0;vvv;vvv
+a00005;product5;167;21;1;1;fff;1;fff;fff
+a00006;product6;76;0;2;1;hjj;1;hjj;hjj
+a00007;product7;24;6;2;1;hhh;0;hhh;hhh
+a00008;product8;56;0;2;1;asd;1;asd;asd
+a00009;product9;78;9;1;1;ert;0;ert;ert
+a00010;product10;23;4;2;1;kjh;1;kjh;kjh

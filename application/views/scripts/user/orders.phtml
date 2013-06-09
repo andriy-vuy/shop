@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright (c) 2012 Vuy_Nick
+ * @author Vuy_Nick <lucky_nick@mail.ru>
+ * @version 1.0
+ */
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#code').focus();
+});
+</script>
+<?php
+if($this->name){
+	$name = $this->name;
+	echo "<p><h3>Здравствуйте <strong>$name</strong></h3></p>";
+	if(count($this->orders)){
+		foreach($this->orders as $val){
+			$code = $val['o_code'];
+			$date = $val['o_created'];
+			echo "<a href='/user/order/code/$code/'>$code</a> от $date<br>";
+		}
+	}else{
+		echo"<p>У Вас пока нет заказов</p>";
+	}
+}else{
+$name = 'guest';
+echo "<p><h3>Здравствуйте $name</h3></p>";
+echo $this->form;
+}
+?>
