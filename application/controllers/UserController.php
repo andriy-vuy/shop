@@ -339,7 +339,23 @@ class UserController extends Zend_Controller_Action
 		}
 	}
 	
-
+    public function testfileAction()
+    {
+        $this->_helper->layout->setLayout('newapplayout');
+        $this->view->title = "Личный кабинет";
+        $this->view->headTitle($this->view->title);
+		if(isset(Zend_Auth::getInstance()->getIdentity()->id)){
+			$identit = Zend_Auth::getInstance()->getIdentity()->id;
+			$this->view->identit = $identit;
+		}else{
+			$this->view->message = 'Здравствуйте гость';
+		}
+		$sesid = Zend_Session::getId();
+		$cart = new Application_Model_ShoppingCart($sesid);
+		$this->view->cart = $cart->getUserCart($sesid);
+        
+        
+    }
 
 }
 
