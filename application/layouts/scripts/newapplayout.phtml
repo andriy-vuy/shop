@@ -9,12 +9,10 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="bootstrap/css/font-awesome.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootswatch.css">
-
+    <?php echo $this->headLink()->prependStylesheet('/bootstrap/css/bootstrap.min.css');?>
+    <?php echo $this->headLink()->prependStylesheet('/bootstrap/bootstrap-responsive.min.css');?>
+    <?php echo $this->headLink()->prependStylesheet('/bootstrap/css/font-awesome.min.css');?>
+    <?php echo $this->headLink()->prependStylesheet('/bootstrap/css/bootswatch.css');?>
    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript">
 
      var _gaq = _gaq || [];
@@ -902,9 +900,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../js/jquery.smooth-scroll.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap/js/bootswatch.js"></script>
+    <?php echo $this->headScript()->appendFile($this->baseUrl().'/bootstrap/js/bootstrap.min.js');?>
+    <?php echo $this->headScript()->appendFile($this->baseUrl().'/bootstrap/js/bootswatch.js');?>
+    <?php echo $this->headScript()->appendFile($this->baseUrl().'/bootstrap/js/jquery.smooth-scroll.min.js');?>
 
 
   
